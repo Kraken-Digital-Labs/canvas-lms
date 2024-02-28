@@ -1,7 +1,5 @@
 #Instalador de Canvas
 
-
-
 #Instalación de PostgresSQL
 sudo apt-get install postgresql-12
 
@@ -17,7 +15,7 @@ sudo -u postgres psql -c "alter user $USER with superuser" postgres
 
 #Instalación de Git
 
-sudo apt-get install git-core
+sudo apt-get install curl git git-core
 
 sudo apt-get install software-properties-common
 
@@ -89,7 +87,7 @@ production: &default
 
 encryption_key: daedd3a131ddd8988b14f6e4e01039c93cfa0160
 
-lti_iss: '{your_domain}'
+lti_iss: 'dominio.com'
 ______________________________________________
 
 sudo apt-get install libyaml-dev
@@ -178,51 +176,119 @@ crontab -e
 sudo nano /etc/apache2/sites-available/canvas.conf
 
 canvas.conf  => 
-______________________________________________
+Caso 1
+-------------------------------------
 <VirtualHost *:80>
-ServerName dominio.com
-DocumentRoot /var/canvas/public
-PassengerRuby /usr/bin/ruby3.1
-PassengerAppEnv production
-RailsEnv production
+  ServerName dominio.com
+  ServerAlias canvasfiles.example.com
+  ServerAdmin youremail@example.com
+  DocumentRoot /var/canvas/public
+  PassengerRuby /usr/bin/ruby3.1
+  PassengerAppEnv production
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_ssl_access.log combined
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteCond %{REQUEST_URI} !^/health_check
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_access.log combined
+  SetEnv RAILS_ENV production
+  RailsEnv production
+  XSendFile On
+  XSendFilePath /var/canvas
 <Directory /var/canvas/public>
 AllowOverride all
 Options -MultiViews
 Require all granted
 </Directory>
 </VirtualHost>
-______________________________________________
-
- sudo nano /etc/apache2/sites-available/canvas-ssl.conf
-canvas-ssl.conf
-______________________________________________
-<IfModule mod_ssl.c>
+# If you are only serving HTTP behind a HTTPS-terminating load balancer, skip the next VirtualHost
 <VirtualHost *:443>
-ServerName dominio.com
-DocumentRoot /var/canvas/public
-PassengerRuby /usr/bin/ruby3.1
-PassengerAppEnv production
-RailsEnv production
-SSLEngine On
-SSLCertificateFile /etc/letsencrypt/live/dominio.com/fullchain.pem
-SSLCertificateKeyFile /etc/letsencrypt/live/dominio.com/privkey.pem
-Include /etc/letsencrypt/options-ssl-apache.conf
-ProxyPass /api/session http://localhost:3001/api/session
-ProxyPassReverse /api/session http://localhost:3001/api/session
-<Directory /var/canvas/public>
-AllowOverride all
-Options -MultiViews
-Require all granted
-</Directory>
+  ServerName dominio.com
+  ServerAlias canvasfiles.example.com
+  ServerAdmin youremail@example.com
+  DocumentRoot /var/canvas/public
+  PassengerRuby /usr/bin/ruby3.1
+  PassengerAppEnv production
+  SetEnv RAILS_ENV production
+  RailsEnv production
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_ssl_access.log combined
+  SSLEngine on
+  BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+  # the following ssl certificate files are generated for you from the ssl-cert package.
+  SSLCertificateFile /etc/letsencrypt/live/dominio.com/fullchain.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/dominio.com/privkey.pem
+  Include /etc/letsencrypt/options-ssl-apache.conf
+  XSendFile On
+  XSendFilePath /var/canvas
+  ProxyPass /api/session http://localhost:3001/api/session
+  ProxyPassReverse /api/session http://localhost:3001/api/session
+  <Directory /var/canvas/public>
+    Options All
+    AllowOverride All
+    Require all granted
+  </Directory>
 </VirtualHost>
-</IfModule>
+
+-------------------------------------
+
+Caso 2
+___________________________________
+VirtualHost *:80>
+  ServerName lms.paisdelconocimiento.org
+  ServerAlias lmsx.eastus.cloudapp.azure.com
+  ServerAdmin juan.villa@paisdelconocimiento.org
+  DocumentRoot /var/canvas/public
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteCond %{REQUEST_URI} !^/health_check
+  RewriteRule (.*) <https://%{HTTP_HOST}%{REQUEST_URI>} [L]
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_access.log combined
+  SetEnv RAILS_ENV production
+  <Directory /var/canvas/public>
+    Allow from all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
+<VirtualHost *:443>
+  ServerName lms.paisdelconocimiento.org
+  ServerAlias lmsx.eastus.cloudapp.azure.com
+  ServerAdmin juan.villa@paisdelconocimiento.org
+  DocumentRoot /var/canvas/public
+  ErrorLog /var/log/apache2/canvas_errors.log
+  LogLevel warn
+  CustomLog /var/log/apache2/canvas_ssl_access.log combined
+  SSLEngine on
+  BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+  # the following ssl certificate files are generated for you from the ssl-cert package.
+  SSLCertificateFile /etc/letsencrypt/live/lms.paisdelconocimiento.org/fullchain.pem
+  SSLCertificateKeyFile /etc/letsencrypt/live/lms.paisdelconocimiento.org/privkey.pem
+  Include /etc/letsencrypt/options-ssl-apache.conf
+  SetEnv RAILS_ENV production
+  <Directory /var/canvas/public>
+    Options All
+    AllowOverride All
+    Require all granted
+  </Directory>
+</VirtualHost>
 ______________________________________________
 
 sudo apt-get install libapache2-mod-xsendfile
 
-sudo a2ensite canvas.conf; sudo a2ensite canvas-ssl.conf;
+sudo apachectl -M | sort
 
-sudo a2enmod proxy_http; sudo service apache2 restart; 
+sudo a2ensite canvas.conf
+
+sudo a2enmod proxy_http
+
+sudo service apache2 restart
 
 sudo add-apt-repository ppa:chris-lea/redis-server
 
@@ -248,6 +314,12 @@ production:
 cache_store: redis_cache_store 
 ______________________________________________
 
+sudo chown USER config/cache_store.yml
+sudo chmod 400 config/cache_store.yml
+
+sudo cp config/redis.yml.example config/redis.yml
+
+cd /var/canvas/
 
 sudo cp config/redis.yml.example config/redis.yml
 
@@ -259,6 +331,10 @@ production:
 url:
 - redis://localhost
 ______________________________________________
+
+sudo chown USER config/redis.yml
+
+sudo chmod 400 config/redis.yml
 
 sudo ln -s /var/canvas/script/canvas_init /etc/init.d/canvas_init
 
@@ -375,4 +451,31 @@ ______________________________________________
 config.action_dispatch.x_sendfile_header = 'X-Sendfile'
 ______________________________________________
 
+sudo ln -s /var/canvas/script/canvas_init /etc/init.d/canvas_init
 
+sudo update-rc.d canvas_init defaults
+
+sudo /etc/init.d/canvas_init start
+
+sudo /etc/init.d/apache2 restart
+
+sudo /etc/init.d/canvas_init restart
+
+psql canvas_production -c "select last_error from delayed_jobs order by updated_at desc limit 1;"
+
+sudo /etc/init.d/canvas_init status
+
+psql canvas_production -c "select message, backtrace from error_reports order by id desc limit 1;"
+
+cd /var/canvas
+
+sudo su canvasuser -c "env GEM_HOME=/home/USER/gems \
+                                      RAILS_ENV=production script/console"
+
+cd ~/canvas
+
+GEM_HOME=~/gems script/console
+
+# tweak footer
+CONF=$WEBROOT/app/views/layouts/application.html.erb
+sed -i "s|</footer>|<div id='turnkey-credit' style='text-align:center;padding-top:20px;'><a href='https://www.turnkeylinux.org/canvas'>Canvas Appliance</a> - Powered by <a href='https://www.turnkeylinux.org'>TurnKey Linux</a></div>\n    </footer>|" $CONF
