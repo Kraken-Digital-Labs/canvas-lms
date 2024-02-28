@@ -14,5 +14,7 @@ Installation
 Detailed instructions for installation and configuration of Canvas are provided
 on our wiki.
 
- * [Quick Start](http://github.com/instructure/canvas-lms/wiki/Quick-Start)
- * [Production Start](http://github.com/instructure/canvas-lms/wiki/Production-Start)
+
+ * [Instalador](https://github.com/Kraken-Digital-Labs/canvas-lms/blob/master/installer.md)
+ * [Inicio Rapido](http://github.com/instructure/canvas-lms/wiki/Quick-Start)
+ * [Inicio a producción](http://github.com/instructure/canvas-lms/wiki/Production-Start)
