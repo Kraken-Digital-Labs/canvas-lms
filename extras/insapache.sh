@@ -1,6 +1,6 @@
-sudo add-apt-repository ppa:ondrej/apache2
+sudo add-apt-repository -y ppa:ondrej/apache2
 sudo apt-get update
-sudo apt-get install apache2
+sudo apt-get install -y apache2
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
 curl https://oss-binaries.phusionpassenger.com/auto-software-signing-gpg-key.txt | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/phusion.gpg >/dev/null
 sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger jammy main > /etc/apt/sources.list.d/passenger.list'
