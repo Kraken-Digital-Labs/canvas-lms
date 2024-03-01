@@ -1,12 +1,14 @@
-development:
-  address: "smtp.example.com"
-  port: "25"
-  user_name: "user"
-  password: "password"
-  authentication: "plain" # plain, login, or cram_md5
-  domain: "example.com"
-  outgoing_address: "canvas@example.com"
-  default_name: "Instructure Canvas"
+production:
+address: smtp1.s.ipzmarketing.com # Your SMTP server address
+port: "587" # Port 465 for SSL
+enable_starttls_auto: true # Disable TLS
+ssl: true # Enable SSL
+user_name: "nqgkdgvqyxme"
+password: "geeNcptXJxI"
+authentication: cram_md5 # secure authentication
+domain: smtp.gmail.com # Your SMTP server address
+outgoing_address: "juan.villa@paisdelconocimiento.org"
+default_name: "Universidad en Linea"
 
 # or to use sendmail --
 #
