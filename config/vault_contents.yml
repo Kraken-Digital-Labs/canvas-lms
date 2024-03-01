@@ -17,8 +17,8 @@ development:
   'app-canvas/data/secrets':
     data:
       canvas_security:
-        encryption_secret: "astringthatisactually32byteslong"
-        signing_secret: "astringthatisactually32byteslong"
+        encryption_secret: "YOUR_ECOSYSTEM_KEY"
+        signing_secret: "YOUR_ECOSYSTEM_SECRET"
       lti_platform_storage:
         signing_secret: "astringthatisactually32byteslong"
 #     pandata_creds:
