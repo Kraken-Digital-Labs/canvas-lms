@@ -1,0 +1,4 @@
+export CANVAS_LMS_ADMIN_EMAIL=juan.villa@paisdelconocimiento.org
+export CANVAS_LMS_ADMIN_PASSWORD=CambiarmeAlEntrar.*
+export CANVAS_LMS_ACCOUNT_NAME=villa
+export CANVAS_LMS_STATS_COLLECTION=opt_in
