@@ -1,3 +1,12 @@
+
+
+```
+sudo -u postgres createuser $USER
+sudo -u postgres psql -c "alter user $USER with superuser" postgres
+```
+
+
+
 #Instalador de Canvas
 
 #Instalación de PostgresSQL
@@ -21,7 +30,7 @@ sudo apt-get install software-properties-common
 
 #Instalación de Ruby
 
-udo add-apt-repository ppa:instructure/ruby
+sudo add-apt-repository ppa:instructure/ruby
 
 sudo apt-get update
 
@@ -479,3 +488,15 @@ GEM_HOME=~/gems script/console
 # tweak footer
 CONF=$WEBROOT/app/views/layouts/application.html.erb
 sed -i "s|</footer>|<div id='turnkey-credit' style='text-align:center;padding-top:20px;'><a href='https://www.turnkeylinux.org/canvas'>Canvas Appliance</a> - Powered by <a href='https://www.turnkeylinux.org'>TurnKey Linux</a></div>\n    </footer>|" $CONF
+
+isable SELinux - REQUIRED
+
+Currently Kaltura doesn't properly support running with SELinux, things will break if you don't set it to permissive. If your instance has it enabled [by default Debian and Ubuntu do not enable SELinux], run:
+
+# setenforce permissive
+
+To verify SELinux will not revert to enabled next restart:
+
+    Edit the file /etc/selinux/config
+    Verify or change the value of SELINUX to permissive: SELINUX=permissive
+    Save the file /etc/selinux/config
