@@ -1,4 +1,4 @@
 cd /var
-git clone https://github.com/instructure/canvas-lms.git canvas
+sudo git clone https://github.com/kraken-digital-labs/canvas-lms.git canvas
 cd canvas
 git checkout prod
