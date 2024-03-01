@@ -4,7 +4,7 @@
 # it whenever a call for consul data is issued. Data should be
 # shaped like the example below, one key for the related set of data,
 # and a hash of key/value pairs (no nesting)
-development:
+production:
   # tree
   config:
     # service
