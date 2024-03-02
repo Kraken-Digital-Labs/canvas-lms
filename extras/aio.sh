@@ -3,6 +3,7 @@ source ~/.bashrc
 source ~/.zshrc
 . ~/.profile
 source ~/.nvm
+source ~/.nvm/nvm.sh
 nvm install v18.17.0
 nvm use v18.17.0
 nvm alias default v18.17.0
