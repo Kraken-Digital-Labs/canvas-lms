@@ -6,3 +6,4 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo swapon --show
 free -h
+df -h
