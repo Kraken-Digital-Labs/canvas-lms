@@ -2,6 +2,7 @@
 bash
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/hst.sh
 sudo sh hst.sh
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/swp.sh | bash
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/basic.sh | bash
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/keys.sh | bash
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/srvr.sh | bash
