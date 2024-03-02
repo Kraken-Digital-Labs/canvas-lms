@@ -1,0 +1,1 @@
+nvm install v18.0.0 && nvm use v18.0.0 && nvm alias default v18.0.0 && npm install -g npm@latest && rvm install 3.1.0 && rvm use 3.1.0 --default && gem install rails --version 3.1.0 && sudo gem install bundler
