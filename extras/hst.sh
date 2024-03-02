@@ -1,5 +1,5 @@
 echo "Type your FQDN"
-read -p "Username: " fqdnx
+read -p "Full Qualified Domain: " fqdnx
 export FQDNX="$fqdnx"
 hostnamectl set-hostname $fqdnx
 source ~/.bashrc
