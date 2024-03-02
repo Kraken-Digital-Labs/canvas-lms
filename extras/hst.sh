@@ -1,4 +1,4 @@
 echo "Type your FQDN"
-read varname
-hostnamectl set-hostname $varname
+read -p 'Username: ' fqdn
+hostnamectl set-hostname $fqdn
 #hostnamectl set-hostname lms.paisdelconocimiento.org
