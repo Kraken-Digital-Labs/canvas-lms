@@ -1,1 +1,0 @@
-sudo apt install build-essential software-properties-common git git-core curl wget make g++ dirmngr gnupg apt-transport-https ca-certificates certbot python3-certbot-apache screen gnupg2 openssl dnsmasq xmlsec1
