@@ -11,3 +11,6 @@ curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master
 #Este paso es la postconfiguración de Canvas RCE
 
 #Este paso configura la configuración posterior de apache
+
+#bajar el ultimo script para terminar
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/canvas_install4.sh | bash
