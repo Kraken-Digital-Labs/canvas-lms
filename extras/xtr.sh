@@ -13,8 +13,7 @@ echo "host all all 0.0.0.0/0 md5" | sudo tee -a /etc/postgresql/16/main/pg_hba.c
 sudo systemctl start postgresql
 sed -i "s/^\(NODE_ENV=\).*/\1production/; s/^\(ECOSYSTEM_SECRET=\).*/\1$ECOSYSTEM_SECRET/; s/^\(ECOSYSTEM_KEY=\).*/\1$ECOSYSTEM_KEY/; s/^\(CIPHER_PASSWORD=\).*/\1$CIPHER_PASSWORD/" .env
 sudo find config/ -type f -exec chmod 400 {} +
-sudo chown "$current_user" config/*.yml
+sudo chown $USER config/*.yml
 sudo chmod 400 config/*.yml
 ls -l
-sudo usermod -a -G www-data $current_user
-
+sudo usermod -aG www-data $USER
