@@ -17,3 +17,4 @@ sudo chown "$current_user" config/*.yml
 sudo chmod 400 config/*.yml
 ls -l
 sudo usermod -a -G www-data $current_user
+
