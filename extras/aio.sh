@@ -15,4 +15,7 @@ gem install rails --version 3.1.0
 gem install bundler
 sudo apt install -y yarn=1.19.1-1
 npm -g install yarn
+sudo gem update strscan
+sudo gem uninstall stringio
+sudo gem install stringio -v 3.1.0
 #sudo reboot
