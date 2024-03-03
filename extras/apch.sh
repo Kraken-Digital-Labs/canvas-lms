@@ -2,6 +2,7 @@ bash
 sudo apt-get install -y libapache2-mod-passenger
 sudo usermod -aG www-data $USER
 sudo apt update
+sudo apt install python3-certbot-apache
 sudo apt install certbot
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/cronjob.sh | bash
 sudo unlink /etc/apache2/sites-enabled/000-default.conf
