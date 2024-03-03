@@ -1,4 +1,5 @@
-
+bash
+sudo apt-get install -y libapache2-mod-passenger
 sudo usermod -aG www-data $USER
 sudo unlink /etc/apache2/sites-enabled/000-default.conf
 sudo unlink /etc/apache2/sites-enabled/000-default-ssl.conf
