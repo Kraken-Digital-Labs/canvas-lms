@@ -58,9 +58,9 @@ production:
         url: 'https://cbbsk4vb5k.execute-api.us-east-1.amazonaws.com/prod/pandata-event' # dev PandataEvents environment
       rich-content-service:
         # if you're running canvas-rce-api on its own
-        app-host: "rce.canvas.docker"
-        # if you're running canvas-rce-api with docker-compose/rce-api.override.yml in .env
         app-host: "lms.paisdelconocimiento.org"
+        # if you're running canvas-rce-api with docker-compose/rce-api.override.yml in .env
+        #app-host: "lms.paisdelconocimiento.org"
       common_cartridge_viewer:
         base_url: "http://localhost:3300"
     # another service
