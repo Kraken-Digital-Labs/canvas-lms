@@ -1,4 +1,4 @@
-cd /var/canvas
+cd /var/canvas/canvas-rce-api
 cp .env.example .env
 ECOSYSTEM_SECRET=$(openssl rand -hex 32)
 ECOSYSTEM_KEY=$(openssl rand -hex 32)
