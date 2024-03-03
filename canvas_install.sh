@@ -1,5 +1,7 @@
 #!/bin/bash
 bash
+#Dar permisos al usuario
+sudo usermod -aG sudo $USER
 # Este paso cambia la configuración del servidor
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/hst.sh
 sudo sh hst.sh
