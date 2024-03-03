@@ -6,6 +6,7 @@ curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master
 #Este paso crea los archivos descargando todo el git que sera necesario para ejecutar canvas lms
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/dxc.sh | bash
 #este paso permite descargar los archivos necesarios para terminar de configurar canvas
-https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/dld.sh |bash
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/dld.sh |bash
 #Este archivo descarga los pasos siguientes de la instalación
-https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/canvas_install4.sh
+wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/canvas_install4.sh
+sh canvas_install4.sh
