@@ -18,3 +18,5 @@ sudo chown -R $USER config/environment.rb log tmp public/assets \
                               app/stylesheets/brandable_css_brands Gemfile.lock config.ru
 RAILS_ENV=production bundle exec rake canvas:compile_assets
 chown -R $USER public/dist/brandable_css
+sudo chown $USER config/*.yml
+chmod 400 config/*.yml
