@@ -1,3 +1,4 @@
+#Este paso crea las variables que seran necesarias para ejecutar canvas lms
 cd /var/canvas/
 current_user=$(whoami)
 sudo chown -R "$current_user":"$current_user" .
