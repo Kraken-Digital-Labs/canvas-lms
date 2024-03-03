@@ -1,10 +1,11 @@
 #Este paso llena la base de datos de postgres
-https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/psql.sh
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/psql.sh | bash
 #Este paso llena la base de datos de postgres
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/psql.sh | bash
 #Este paso instala Canvas LMS
-https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/inscanvas.sh
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/inscanvas.sh | bash
 #este paso llena la base de datos de canva
-https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/pdb.sh
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/pdb.sh | bash
 #Este paso configura la instalación de Canvas RCE
 
 #Este paso es la postconfiguración de Canvas RCE
