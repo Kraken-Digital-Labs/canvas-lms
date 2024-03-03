@@ -9,4 +9,5 @@ curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/e2essslc.sh | bash
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/mods.sh | bash
 sudo service apache2 restart
+sudo apache2ctl configtest
 sudo apachectl -M | sort
