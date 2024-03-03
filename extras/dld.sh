@@ -6,6 +6,5 @@ sudo chmod -R u=rwx,go=rx
 cd /var/canvas/config/environments/
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/config/environments/production-local.rb
 cd /var/canvas/config/
-curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/yml.sh | bash
-sudo mv canvas.conf /etc/apache2/sites-available/
-sudo mv canvas-ssl.conf /etc/apache2/sites-available/
+https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/yml.sh | bash
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/aconf.sh | bash
