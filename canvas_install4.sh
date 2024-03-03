@@ -8,7 +8,7 @@ curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master
 #este paso llena la base de datos de canva
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/pdb.sh | bash
 #Este paso configura la instalación de Canvas RCE
-
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/rce.sh | bash
 #Este paso es la postconfiguración de Canvas RCE
 
 #Este paso configura la configuración posterior de apache
