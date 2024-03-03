@@ -7,5 +7,3 @@ wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/con
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/config/dynamic_settings.yml
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/config/domain.yml
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/config/cache_store.yml
-wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/canvas.conf
-wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/canvas-ssl.conf
