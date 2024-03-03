@@ -2,11 +2,11 @@ production:
   address: "smtp1.s.ipzmarketing.com" # Your SMTP server address
   port: "587" # Port 465 for SSL
   enable_starttls_auto: true # Disable TLS
-  ssl: true # Enable SSL
+  ssl:   # Enable SSL
   user_name: "nqgkdgvqyxme"
   password: "geeNcptXJxI"
-  authentication: "login" # secure authentication plain, login, or cram_md5
-  domain: "smtp1.s.ipzmarketing.com" # Your SMTP server address
+  authentication: "plain" # secure authentication plain, login, or cram_md5
+  domain: "lms.paisdelconocimiento.org" # Your SMTP server address
   outgoing_address: "juan.villa@paisdelconocimiento.org"
   default_name: "Universidad en Linea"
 # or to use sendmail .
