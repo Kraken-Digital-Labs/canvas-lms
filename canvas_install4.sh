@@ -10,7 +10,7 @@ curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master
 #Este paso es la postconfiguración de Canvas RCE
 curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/eco.sh | bash
 #Este paso configura la configuración posterior de apache
-https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/apch.sh
+curl -o- https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/extras/apch.sh  | bash
 #bajar el ultimo script para terminar
 wget https://raw.githubusercontent.com/Kraken-Digital-Labs/canvas-lms/master/canvas_install5.sh | bash
 sh canvas_install5.sh
