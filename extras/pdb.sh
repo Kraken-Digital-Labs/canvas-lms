@@ -1,5 +1,7 @@
 bash
 cd /var/canvas
+bundle config set --local path vendor/bundle
+bundle install
 yarn gulp rev
 RAILS_ENV=production bundle exec rake db:initial_setup
 mv db/migrate/20210823222355_change_immersive_reader_allowed_on_to_on.rb .
